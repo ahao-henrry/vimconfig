@@ -1,11 +1,46 @@
-set number " 设置行号
-
-" 设置自动缩进以及tab为 4 个空格
-set ts=4
-set expandtab
-set autoindent
-set tabstop=4
-set shiftwidth=4
-
-" 设置 c 语言的 main 函数快捷键
+set nocompatible " 关闭兼容模式                                                    
+syntax on " 开启语法高亮                                                           
+set number " 设置行号                                                              
+" 设置自动缩进以及tab为 4 个空格                                                   
+set ts=4                                                                           
+set expandtab                                                                      
+set autoindent                                                                     
+set tabstop=4                                                                      
+set shiftwidth=4                                                                   
+                                                                                   
+set hlsearch " 高亮查找结果                                                        
+set encoding=utf-8                                                                 
+set fileencodings=utf-8                                                            
+set ignorecase " 搜索时不区分大小写                                                
+" set cursorline " 高亮光标所在行                                                  
+" set cursorcolumn " 高亮光标所在列                                                
+set scrolloff=4 " 当光标上下移动距离上或者下多少行的时候页面开始滚动               
+set showmatch " 成对括号出现时，当光标移到其中一个，另一个会高亮显示               
+set laststatus=2 " 在倒数第二行显示状态栏                                          
+set noswapfile " 不产生交换文件                                                    
+set nobackup " 不产生备份文件                                                      
+set colorcolumn=80 " 在列宽 80 的地方显示一条线                                    
+                                                                                   
+filetype plugin indent on " 打开文件类型检测                                       
+                                                                                   
+                                                                                   
+" map                                                                              
 imap mainc #include <stdio.h><CR>#include <string.h><CR>#include <stdlib.h><CR><CR>int main(int argc, char** argv)<CR>{<CR><CR><CR>return 0;<CR>}<Esc>3ki<Tab>
+                                                                                   
+                                                                                   
+                                                                                   
+" plugin management                                                                
+call plug#begin('~/.vim/plugged')                                                  
+Plug 'Valloric/YouCompleteMe', { 'do': './install.py --clang-completer',  'for': ['c', 'cpp'] }
+Plug 'vim-airline/vim-airline'                                                     
+call plug#end()                                                                    
+                                                                                   
+                                                                                   
+" explore settings                                                                 
+" 设置文件浏览器的打开方式为水平分割，占屏幕的 25%                                 
+let g:netrw_browse_split=1                                                         
+let g:netrw_winsize=25                                                             
+                                                                                   
+" ycm settings                                                                     
+" 设置 ycm 的配置文件路径,如果不设置每次打开文件都要提示是否加载配置文件           
+let g:ycm_global_ycm_extra_conf='~/.ycm_extra_conf.py'                     
