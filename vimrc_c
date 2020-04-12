@@ -1,0 +1,11 @@
+set number " 设置行号
+
+" 设置自动缩进以及tab为 4 个空格
+set ts=4
+set expandtab
+set autoindent
+set tabstop=4
+set shiftwidth=4
+
+" 设置 c 语言的 main 函数快捷键
+imap mainc #include <stdio.h><CR>#include <string.h><CR>#include <stdlib.h><CR><CR>int main(int argc, char** argv)<CR>{<CR><CR><CR>return 0;<CR>}<Esc>3ki<Tab>
